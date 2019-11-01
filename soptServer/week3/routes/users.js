@@ -4,30 +4,12 @@ const statusCode = require('../module/statusCode');
 const responseMessage = require('../module/responseMessage');
 const authUtil = require('../module/authUtil');
 const User= require('../model/user');
-
+const pool = require('../module/pool');
 /* GET users listing. */
 
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
-
-/*
-[POST]localhost:3000/user/signup
-request body
-{
-   "id":"아이디"
-   "pwd":"비밀번호"
-   "name":"이름"
-   "address":"주소"
-}
-
-response
-1.성공
-2.파라미터 오류
-3.아이디 중복
-4.서버 오류
-
- */
 
 router.post('/signup', (req, res) => {
   const {
