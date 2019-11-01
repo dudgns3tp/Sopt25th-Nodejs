@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const statusCode = require('../module/statusCode');
-const responseMessage = require('../module/responseMessage');
-const authUtil = require('../module/authUtil');
-const Blog = require('../model/blogs')
+var express = require('express');
+var router = express.Router();
+const statusCode = require('../../module/statusCode');
+const responseMessage = require('../../module/responseMessage');
+const authUtil = require('../../module/authUtil');
+const Blog = require('../../model/blogs')
 
 router.post('/',async(req,res)=>{
     const {blogName} = req.body;
@@ -80,4 +80,5 @@ router.delete('/:blogIdx', async(req,res)=>{
         res.status(statusCode.INTERNAL_SERVER_ERROR).wend(authUtil.successFalse(responseMessage.INTERNAL_SERVER_ERROR));
     }
 })
+
 module.exports = router;
