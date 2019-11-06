@@ -18,7 +18,7 @@ module.exports = {
                 json:authUtil.successFalse(responseMessage.BLOG_CREATE_FAIL)
             };
         }
-        
+        console.log(result);
         return{
             code:statusCode.OK,
             json:authUtil.successTrue(responseMessage.BLOG_CREATE_SUCCESS, result)
@@ -34,10 +34,10 @@ module.exports = {
                 json:authUtil.successFalse(responseMessage.BLOG_READ_FAIL)
             };
         }
-
+        console.log(result);
         return {
             code:statusCode.OK,
-            json:authUtil.successTrue(responseMessage.BLOG_READ_SUCCESS)
+            json:authUtil.successTrue(responseMessage.BLOG_READ_SUCCESS, result)
         };
     },
     update: async(blogIdx, blogName) =>{
@@ -51,10 +51,12 @@ module.exports = {
                 json:authUtil.successFalse(responseMessage.BLOG_UPDATE_FAIL)
             };
         }
+
+        console.log(result);
         
         return{
             code:statusCode.OK,
-            json:authUtil.successTrue(responseMessage.BLOG_UPDATE_SUCCESS)
+            json:authUtil.successTrue(responseMessage.BLOG_UPDATE_SUCCESS, result)
         };
     },
     selectAll: async() =>{
@@ -67,10 +69,10 @@ module.exports = {
                 json:authUtil.successFalse(responseMessage.BLOG_READ_ALL_FAIL)
             };
         }
-        
+        console.log(result);
         return{
             code:statusCode.OK,
-            json:authUtil.successTrue(responseMessage.BLOG_READ_ALL_SUCCESS)
+            json:authUtil.successTrue(responseMessage.BLOG_READ_ALL_SUCCESS, result)
         };
     },
     delete: async(blogIdx) =>{

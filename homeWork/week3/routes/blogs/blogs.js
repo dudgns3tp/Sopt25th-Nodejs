@@ -1,9 +1,9 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 const statusCode = require('../../module/statusCode');
 const responseMessage = require('../../module/responseMessage');
 const authUtil = require('../../module/authUtil');
-const Blog = require('../../model/blogs')
+const Blog = require('../../model/blog')
 
 router.post('/',async(req,res)=>{
     const {blogName} = req.body;

@@ -32,5 +32,17 @@ module.exports = {
     BLOG_UPDATE_SUCCESS: "블로그 수정 성공",
     BLOG_UPDATE_FAIL: "블로그 수정 실패",
     BLOG_DELETE_SUCCESS: "블로그 삭제 성공",
-    BLOG_DELETE_FAIL: "블로그 삭제 실패"
+    BLOG_DELETE_FAIL: "블로그 삭제 실패",
+    ARTICLE_CREATE_SUCCESS: "아티클 작성 성공",
+    ARTICLE_CREATE_FAIL: "아티클 작성 실패",
+    ARTICLE_READ_ALL_SUCCESS: "아티클 전체 조회 성공",
+    ARTICLE_READ_ALL_FAIL: "아티클 전체 조회 실패",
+    ARTICLE_READ_SUCCESS: "아티클 조회 성공",
+    ARTICLE_READ_FAIL: "아티클 조회 실패",
+    ARTICLE_UPDATE_SUCCESS: "아티클 수정 성공",
+    ARTICLE_UPDATE_FAIL: "아티클 수정 실패",
+    ARTICLE_DELETE_SUCCESS: "아티클 삭제 성공",
+    ARTICLE_DELETE_FAIL: "아티클 삭제 실패",
+    ARTICLE_READ_ONE_SUCCESS: "아티클 조회 성공",
+    ARTICLE_READ_ONE_FAIL: "아티클 조회 실패"
 }
