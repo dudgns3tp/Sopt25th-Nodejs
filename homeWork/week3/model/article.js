@@ -60,5 +60,37 @@ module.exports ={
             code:statusCode.OK,
             json:authUtil.successTrue(responseMessage.ARTICLE_READ_ALL_SUCCESS, result)
         }
+    },
+    update : async({articleIdx, title, content}) =>{
+        const query = `UPDATE ${table} SET title = '${title}', content = '${content}' WHERE articleIdx = '${articleIdx}'`;
+        const result = await pool.queryParam_None(query);
+
+        if(!result){
+            return{
+                code:statusCode.BAD_REQUEST,
+                json:authUtil.successFalse(responseMessage.ARTICLE_UPDATE_FAIL)
+            }
+        }
+        console.log(result);
+        return{
+            code:statusCode.OK,
+            json:authUtil.successTrue(responseMessage.ARTICLE_UPDATE_SUCCESS, result)
+        }
+    },
+    delete : async({articleIdx}) =>{
+        const query = `DELETE FROM ${table} WHERE articleIdx = '${articleIdx}'`;
+        const result = await pool.queryParam_None(query);
+
+        if(!result){
+            return{
+                code:statusCode.BAD_REQUEST,
+                json:authUtil.successFalse(responseMessage.ARTICLE_DELETE_FAIL)
+            }
+        }
+        console.log(result);
+        return{
+            code:statusCode.OK,
+            json:authUtil.successTrue(responseMessage.ARTICLE_DELETE_SUCCESS, result)
+        }
     }
 }

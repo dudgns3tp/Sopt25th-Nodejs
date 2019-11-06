@@ -69,11 +69,41 @@ router.post('/', (req,res)=>{
 
 });
 
-router.put('/:blogIdx/', (req,res)=>{
+router.put('/:articleIdx', (req,res)=>{
+    const {title, content} = req.body;
+    const {articleIdx} = req.params;
 
+    if(!title || !content || ! articleIdx){
+        const missParameters = Object.entries({title,content})
+        .filter(it => it[1] == undefined).map(it => it[0]).join(',');
+        res.status(statusCode.BAD_REQUEST)
+        .send(authUtil.successFalse(`${responseMessage.NULL_VALUE},${missParameters}`));
+        return;
+    }
+    Article.update({articleIdx, title, content})
+    .then(({code,json})=>{
+        res.status(code).send(json);
+    }).catch(err =>{
+        console.log(err);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
+    });
 })
 
-router.delete('/:blogIdx/:article', (req,res)=>{
+router.delete('/:articleIdx', (req,res)=>{
+    const {articleIdx} = req.params;
+
+    if(!articleIdx){
+        res.status(statusCode.BAD_REQUEST).res(authUtil.successFalse(responseMessage.NULL_VALUE));
+        return;
+    }
+
+    Article.delete({articleIdx})
+    .then(({code,json})=>{
+        res.status(code).send(json);
+    }).catch(err =>{
+        console.log(err);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
+    });
 
 })
 
