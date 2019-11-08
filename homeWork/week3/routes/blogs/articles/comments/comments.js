@@ -17,6 +17,7 @@ router.post('/', (req,res)=>{
         .send(authUtil.successFalse(`${responseMessage.NULL_VALUE},${missParameters}`));
         return;
     }
+    //커멘트 삽입
     Comment.insert({blogIdx, articleIdx, commentContent})
     .then(({code,json}) =>{
         res.status(code).send(json);
@@ -24,24 +25,72 @@ router.post('/', (req,res)=>{
         console.log(err);
         res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
     })
-
-
 });
-
+/* commentIdx 값으로 comment 조회하기*/
 router.get('/:commentIdx', (req,res) =>{
+    const {commentIdx} = req.params;
+    // 파라미터 체크
+    if(!commentIdx){
+        res.status(statusCode.BAD_REQUEST).send(authUtil(responseMessage.NULL_VALUE));
+    }
+
+    Comment.read({commentIdx})
+    .then(({code,json})=>{
+        res.status(code).send(json);
+    }).catch(err =>{
+        console.log(err);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
+    })
 
 })
 
-router.get('/', (rea,res)=>{
+router.get('/', (req,res)=>{
+    Comment.readAll()
+    .then(({code,json})=>{
+        res.status(code).send(json);
+    }).catch(err =>{
+        console.log(err);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
+    })
 
 })
 
 
 router.put('/:commentIdx', (req,res)=>{
+    const {commentContent} = req.body;
+    const {commentIdx} = req.params;
 
+    if(!commentContent || !commentIdx){
+        const missParameters = Object.entries({commentIdx,commentContent})
+        .filter(it => it[1] == undefined).map(it => it[0]).join(',');
+        res.status(statusCode.BAD_REQUEST)
+        .send(authUtil.successFalse(`${responseMessage.NULL_VALUE},${missParameters}`));
+        return;
+    }
+    Comment.update({commentIdx,commentContent})
+    .then(({code,json})=>{
+        res.status(code).send(json);
+    }).catch(err =>{
+        console.log(err);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
+    });
 })
 
 router.delete('/:commentIdx', (req,res)=>{
+    const {commentIdx} = req.params;
+
+    if(!commentIdx){
+        res.status(statusCode.BAD_REQUEST).res(authUtil.successFalse(responseMessage.NULL_VALUE));
+        return;
+    }
+
+    Comment.delete({commentIdx})
+    .then(({code,json})=>{
+        res.status(code).send(json);
+    }).catch(err =>{
+        console.log(err);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send(responseMessage.INTERNAL_SERVER_ERROR);
+    });
 
 })
 

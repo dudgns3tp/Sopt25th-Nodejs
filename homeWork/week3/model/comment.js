@@ -26,16 +26,73 @@ module.exports ={
             json:authUtil.successTrue(responseMessage.COMMENT_CREATE_SUCCESS, result)
         };
     },
-    read : async()=>{
+    /* 커멘트 인덱스로 해당 댓글 조회 */
+    read : async({commentIdx})=>{
+        const fields = 'commentIdx';
+        const questions = `'${commentIdx}'`;
+        const query = `SELECT * FROM ${table} WHERE (${fields}) = ${questions}`;
+        const result = await pool.queryParam_None(query);
+        
+        if(!result){
+            return{
+                code:statusCode.BAD_REQUEST,
+                json:authUtil.successFalse(responseMessage.COMMENT_READ_FAIL)
+            }
+        }
 
+        console.log(result);
+        return{
+            code:statusCode.OK,
+            json:authUtil.successTrue(responseMessage.COMMENT_READ_SUCCESS, result)
+        }
     },
+    /* 블로그, 아티클 무관 모든 댓글을 조회 */
     readAll : async()=>{
+        const query = `SELECT * FROM ${table}`;
+        const result = await pool.queryParam_None(query);
 
+        if(!result){
+            return{
+                code:statusCode.BAD_REQUEST,
+                json:authUtil.successFalse(responseMessage.COMMENT_READ_ALL_FAIL)
+            }
+        }
+        console.log(result);
+        return{
+            code:statusCode.OK,
+            json:authUtil.successTrue(responseMessage.COMMENT_READ_ALL_SUCCESS, result)
+        }
     },
-    update : async () =>{
+    update : async({commentIdx, commentContent}) =>{
+        const query = `UPDATE ${table} SET commentContent= '${commentContent}' WHERE commentIdx = '${commentIdx}'`;
+        const result = await pool.queryParam_None(query);
 
+        if(!result){
+            return{
+                code:statusCode.BAD_REQUEST,
+                json:authUtil.successFalse(responseMessage.ARTICLE_UPDATE_FAIL)
+            }
+        }
+        console.log(result);
+        return{
+            code:statusCode.OK,
+            json:authUtil.successTrue(responseMessage.ARTICLE_UPDATE_SUCCESS, result)
+        }
     },
-    delete : async ()=>{
+    delete : async({commentIdx}) =>{
+        const query = `DELETE FROM ${table} WHERE commentIdx = '${commentIdx}'`;
+        const result = await pool.queryParam_None(query);
 
+        if(!result){
+            return{
+                code:statusCode.BAD_REQUEST,
+                json:authUtil.successFalse(responseMessage.ARTICLE_DELETE_FAIL)
+            }
+        }
+        console.log(result);
+        return{
+            code:statusCode.OK,
+            json:authUtil.successTrue(responseMessage.ARTICLE_DELETE_SUCCESS, result)
+        }
     }
 }
