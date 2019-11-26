@@ -12,5 +12,6 @@ const authUtil = {
             message: message
         }
     },
+
 }
 module.exports = authUtil

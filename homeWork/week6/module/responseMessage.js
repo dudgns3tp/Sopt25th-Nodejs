@@ -33,6 +33,6 @@ module.exports = {
     BLOG_UPDATE_FAIL: "블로그 수정 실패",
     BLOG_DELETE_SUCCESS: "블로그 삭제 성공",
     BLOG_DELETE_FAIL: "블로그 삭제 실패",
-    BOOK_READ_ALL_SUCCESS: "책장속 발견 조회 성공",
-    BOOK_READ_ALL_FAIL: "책장속 발견 조회 실패"
+    BOOK_READ_ALL_SUCCESS: "책장 속의 발견 성공",
+    BOOK_READ_ALL_FAIL: "책장 속의 발견 실패"
 }
