@@ -1,6 +1,6 @@
 ## 서버통신
 
-![클라이언트](https://github.com/dudgns3tp/public/images/client.png "통신 성공 이미지")
+![클라이언트](https://github.com/dudgns3tp/Sopt25th-Nodejs/blob/master/homeWork/week6/public/images/client.png?raw=true "통신 성공 이미지")
 
 ## API 문서
 
