@@ -1,3 +1,7 @@
+## 서버통신
+
+![클라이언트](https://github.com/dudgns3tp/public/images/client.png "통신 성공 이미지")
+
 ## API 문서
 
 ## 취향이 비슷한 사람들의 책 조회
