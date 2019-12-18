@@ -138,28 +138,52 @@ Authorization: token(선택)
 ```json
 {
     "success": true,
-    "message": "책장 속의 발견 성공!",
+    "message": "책장 속의 발견 성공",
     "data": [
         {
-            "bookname": "집에 가고싶다1",
-            "author": "허정민",
-            "bookcover": "Server_Android/week6/public/images/11.jpg",
-            "star": "4.3",
-            "scrap": "TRUE"
+            "bookIdx": 1,
+            "bookname": "리액트를 다루는 기술",
+            "author": " 벨로퍼트",
+            "bookcover": "http://image.kyobobook.co.kr/images/book/large/796/l9791160508796.jpg",
+            "star": 0,
+            "scrap": 0,
+            "category": "library"
         },
         {
-            "bookname": "집에 가고싶다2",
-            "author": "허정민",
-            "bookcover": "Server_Android/week6/public/images/11.jpg",
-            "star": "4.3",
-            "scrap": "FALSE"
+            "bookIdx": 2,
+            "bookname": "생각하는 프로그래밍",
+            "author": "존 벤틀리",
+            "bookcover": "http://image.kyobobook.co.kr/images/book/large/997/l9788966260997.jpg",
+            "star": 0,
+            "scrap": 0,
+            "category": "library"
         },
         {
-            "bookname": "집에 가고싶다3",
-            "author": "허정민",
-            "bookcover": "Server_Android/week6/public/images/11.jpg",
-            "star": "4.3",
-            "scrap": "FALSE"
+            "bookIdx": 3,
+            "bookname": "Clean Code",
+            "author": "로버트 C 마틴",
+            "bookcover": "http://image.kyobobook.co.kr/images/book/large/959/l9788966260959.jpg",
+            "star": 0,
+            "scrap": 0,
+            "category": "library"
+        },
+        {
+            "bookIdx": 4,
+            "bookname": "일의 기쁨과 슬픔",
+            "author": "장류진",
+            "bookcover": "http://image.kyobobook.co.kr/images/book/large/036/l9788936438036.jpg",
+            "star": 0,
+            "scrap": 0,
+            "category": "library"
+        },
+        {
+            "bookIdx": 5,
+            "bookname": "호텔 창문",
+            "author": "판혜영 외",
+            "bookcover": "http://image.kyobobook.co.kr/images/book/large/614/l9791189982614.jpg",
+            "star": 0,
+            "scrap": 0,
+            "category": "library"
         }
     ]
 }
